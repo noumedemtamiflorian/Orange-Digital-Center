@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test React JS</title>
+</head>
+<body>
+    <form id="form" method="post" onsubmit="envoyer()">
+        <div>
+            <label for="prenom">prénom</label><input type="text"  required name="prenom" id="prenom">
+        </div>
+        <div>
+            <label for="email">Email</label><input type="email" required name="email" id="email">
+        </div> 
+        <div>
+              <label  for="prix_unitaire">prix unitaire</label><input required onchange="change()" placeholder="Entrer un nombre" type="text" name="prix_unitaire" id="prix_unitaire">
+        </div>   
+        <div>
+            <label for="quantite">quantité</label><input type="text" required onchange="change()" placeholder="Entrer un nombre" name="" id="quantite">
+        </div>
+        <div>
+            <label for="prix_total">prix total</label><input type="text" required name="" id="prix_total">        
+        </div>
+        <button>Envoyer</button>
+    </form>
+        <script src="./index.js"></script>
+</body>
+</html>
