@@ -1,0 +1,20 @@
+.containeur {
+    background-color: black;
+    width: 25rem;
+    background-color: gray;
+    margin: auto auto;
+    padding: 10px 10px;
+    border-radius: 10px 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul>li {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0 5px 0;
+}
