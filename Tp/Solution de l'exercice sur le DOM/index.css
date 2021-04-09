@@ -1,7 +1,7 @@
 .containeur {
     background-color: black;
     width: 25rem;
-    background-color: gray;
+    background-color: #0872FF;
     margin: auto auto;
     padding: 10px 10px;
     border-radius: 10px 10px;
@@ -13,8 +13,13 @@ ul {
 }
 
 ul>li {
-    color: white;
+    color: #39FF81;
     display: flex;
     justify-content: space-between;
     margin: 5px 0 5px 0;
+}
+
+h1 {
+    text-align: center;
+    color: #FF6005;
 }
