@@ -1,9 +1,9 @@
 import './App.css';
-import data from "../src/Components/data"
-import Logement from "../src/Components/Logement"
+import data from "./Components/data/data"
+import Logements from "./Components/Logements/Logements"
 import React from 'react';
-
-
+import 'antd/dist/antd.css';
+import { Pagination } from "antd"
 
 class App extends React.Component {
 
@@ -17,63 +17,23 @@ class App extends React.Component {
     }
   }
 
-  changePerPage() {
+  handleChange = value => {
+    const { eltPage } = this.state;
+    const indexOfLastLog = value * eltPage;
+    const indexOfFirstLog = indexOfLastLog - eltPage;
     this.setState({
-      eltPage: parseInt(document.querySelector('select').value),
+      currentPage: value,
+      logements: data.slice(indexOfFirstLog, indexOfLastLog)
+    });
+  };
+
+  handleSelectChange = e => {
+    this.setState({
+      eltPage: e.target.value,
       pageCurrent: 1,
-      logements: data.slice(0, parseInt(document.querySelector('select').value)),
-    })
-  }
-
-  changeCurrentPage(position) {
-    this.setState({
-      logements: data.slice((position - 1) * this.state.eltPage, position * this.state.eltPage),
-      pageCurrent: position
-    })
-  }
-
-  get pagination() {
-    const nbrBtn = Math.ceil(data.length / this.state.eltPage)
-    let btns = []
-    let options = [4, 6, 8, 10].map((value) => {
-      return <option key={value} > {value}</ option>
-    })
-    for (let i = 0; i < nbrBtn; i++) {
-      btns.push(
-        <li key={i}>
-          <button onClick={() => this.changeCurrentPage(i + 1)} className={this.state.pageCurrent === (i + 1) ? "btnSelect" : 'btn'}>{i + 1}</button>
-        </li>
-      )
-    }
-    return (
-
-      <div id="pagination">
-        <select onChange={() => this.changePerPage()}>
-          {options}
-        </select>
-        <ul>
-          {btns}
-        </ul>
-      </div>)
-  }
-
-  get logements() {
-    return this.state.logements.map((value) => {
-      return (<Logement
-        key={value.id}
-        id={value.id}
-        image={value.image}
-        type={value.type}
-        salon={value.type}
-        chambre={value.chambre}
-        douche={value.douche}
-        terrase={value.terasse}
-        loyer={value.loyer}
-        etat={value.etat}
-      ></Logement>)
-    })
-  }
-
+      logements: data.slice(0, e.target.value)
+    });
+  };
 
   render() {
     return (
@@ -90,15 +50,26 @@ class App extends React.Component {
         </header>
         <main>
           <article>
-            {this.logements}
+            <Logements logements={this.state.logements}></Logements>
           </article>
         </main>
-        <footer>
-          {this.pagination}
+        <footer className="pagination_div">
+          <Pagination
+            defaultCurrent={this.state.pageCurrent}
+            defaultPageSize={this.state.eltPage} //default size of page
+            pageSize={this.state.eltPage}
+            onChange={this.handleChange}
+            total={/*loadingOk && */data.length > 0 && data.length} //total number of card data available
+          />
+          <select value={this.state.eltPage} onChange={this.handleSelectChange}>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
         </footer>
-        {this.paginatedModule}
       </div>
     )
   }
 }
+
 export default App;
