@@ -1,0 +1,27 @@
+<nav class="navbar px-4 navbar-expand-sm navbar-dark bg-success">
+	<div>
+		<a class="navbar-brand" href="{% url 'products:index' %}">Produits</a>
+		<a class="navbar-brand" href="{% url 'products:index' %}">Categories</a>
+	</div>
+	<ul class="nav justify-content-center">
+		{% if user.is_authenticated %}
+
+		<li class="nav-item">
+			<a class="nav-link text-light " href="#">User:
+				{{ user.get_username }}</a>
+		</li>
+		<li class="nav-item">
+			<!-- <a class="nav-link text-light" href="{% url 'logout'%}?next={{request.path}}">Logout</a> -->
+			<a class="nav-link text-light" href="{% url 'logout'%}">Logout</a>
+		</li>
+		{% else %}
+
+		<li class="nav-item">
+			<a class="nav-link text-light" href="{% url 'login'%}">Login</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-light" href="{% url 'accounts:signup' %}">Registration</a>
+		</li>
+		{% endif %}
+	</ul>
+</nav>

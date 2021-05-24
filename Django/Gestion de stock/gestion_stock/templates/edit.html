@@ -1,0 +1,8 @@
+<h1 class="text-center my-3">Editer Le Produit</h1>
+<div class="col-6 mb-3 mx-auto">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button class="btn btn-primary" type="submit">Editer</button>
+    </form>
+</div>

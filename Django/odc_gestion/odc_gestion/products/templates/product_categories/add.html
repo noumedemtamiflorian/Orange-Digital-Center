@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+    <span class="TextLabel m-y">Bonjour à vous</span>
+    <h1>Produits</h1>
+    <h3>{{ page_title }}</h3>
+    <div class="Form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="FormGroup">
+                <label>{{ field.label }} : </label>
+                <!-- <input type="email" name="user_email" value="" autocomplete="" /> -->
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="FormGroup">
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<p class="mx-2 my-4 text-center">Bonjour à toi {{ user.username }}</p>
+
+{% else%}
+
+<p class="mx-2 my-4 text-center">Bonjour à vous</p>
+
+{% endif %}
+<h1 class="text-center">Vos Categories De Product</h1>
+<div class="Actions d-flex justify-content-end">
+    <a href="{% url 'products:new' %}"><button class="btn btn-primary">Ajouter</button></a>
+</div>
+<table class="table table-striped table-inverse text-center table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.slug }}</td>
+            <td>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'products:product_category' category.slug %}"><button class="btn btn-primary">Voir</button></a>
+                    <a href="{% url 'products:edit_category' category.id  %}"><button class="btn btn-primary">Editer</button></a>
+                    <a href="{% url 'products:delete_category'  category.id %}"><button
+                            class="btn btn-danger">Supprimer</button></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

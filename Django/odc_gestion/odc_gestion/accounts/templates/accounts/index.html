@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<h1>
+	Bienvenue
+	{{user}}
+</h1>
+<a href="{% url 'logout'%}">Deconnecter	</a>
+{% endblock %}

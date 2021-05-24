@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+
+<form method="POST" class="mt-5 mx-auto col-6">
+    {% csrf_token %}
+    <h2 class="text-center">Voulez vous deconnectez ? </h2>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock content %}

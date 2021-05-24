@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+    <span class="TextLabel m-y">Bonjour à vous</span>
+    <h1>Catégorie de Produits</h1>
+    <h3>{{ page_title }}</h3>
+    <!-- <div class="Actions">
+        <a href="/new"><button>Ajouter</button></a>
+    </div> -->
+    <!-- <ul>
+    {% for user in users %}
+        <li>{{ user.name }}</li>
+    {% endfor %}
+    </ul> -->
+    <div class="Form">
+        <form action="./{{ user.id }}" method="POST">
+            {% csrf_token %}
+            <div class="FormGroup">
+                Voulez-vous supprimer la catégorie<< {{ product_category.name }} >> ?
+            </div>
+            <div class="FormGroup">
+                <button type="submit">Confirmer</button>
+                <a href="../"><button type="button">Annuler</button></a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

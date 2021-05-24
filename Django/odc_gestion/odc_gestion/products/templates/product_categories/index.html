@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+    <span class="TextLabel m-y">Bonjour à vous</span>
+    <h1>Catégorie de Produits</h1>
+    <div class="Actions">
+        <a href="new"><button>Ajouter</button></a>
+    </div>
+    <!-- <ul>
+    {% for user in users %}
+        <li>{{ user.name }}</li>
+    {% endfor %}
+    </ul> -->
+    <div class="dataTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pc in product_categories %}
+                <tr>
+                    <td>{{ pc.id }}</td>
+                    <td>{{ pc.name }}</td>
+                    <td>
+                        <div class="Actions">
+                            <a href="show/{{ pc.id }}"><button>Voir</button></a>
+                            <a href="edit/{{ pc.id }}"><button>Editer</button></a>
+                            <a href="delete/{{ pc.id }}"><button>Supprimer</button></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

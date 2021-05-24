@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ page_title }} - {{ product.name }}
+{% endblock head_title %}
+
+{% block content %}
+    <span class="TextLabel m-y">Bonjour à vous</span>
+    <h1>Catégorie de Produits</h1>
+    <div class="Actions">
+        <a href="../edit/{{ product_category.id }}"><button>Editer</button></a>
+        <a href="../delete/{{ product_category.id }}"><button>Supprimer</button></a>
+    </div>
+    <div class="Card">
+        <div class="TextLabel m-y ">Name : {{ product_category.name  }}</div>
+        <!-- <div class="TextLabel m-y">Price : {{ product.price  }} F CFA</div>
+        <div class="TextLabel m-y">Details : {{ product.details  }}</div>
+        <div class="TextLabel m-y">Brand : {{ product.brand  }}</div>
+        <div class="TextLabel m-y">Weight : {{ product.details  }}</div>
+        <div class="TextLabel m-y">Category : {{ product.category.name  }}</div> -->
+
+    </div>
+{% endblock content %}

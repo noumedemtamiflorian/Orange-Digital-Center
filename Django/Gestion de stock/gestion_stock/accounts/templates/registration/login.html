@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-5 col-sm-6 mx-auto col-xl-4">
+        <h1 class="mt-5 mb-3 text-center">Please sign in</h1>
+        <p class="mb-5 text-center text-muted">Your products are waiting for you.</p>
+
+        <form method="post">
+            {% csrf_token%}
+
+            {{form.as_p}}
+
+            <button class="btn btn-lg btn-block btn-primary" type="submit">
+                Sign in
+            </button>
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p class="mt-5 mb-3 text-center text-muted">
+                <a href="{% url 'password_reset' %}">Lost password?</a> ; Not registered yet?
+                <a href="{% url 'accounts:signup'  %}">Create an account</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

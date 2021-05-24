@@ -1,0 +1,17 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+<h1 class="my-5 text-center">Suppression du produit {{ product.name }} </h1>
+<form method="POST" class="col-10 mx-auto">
+    {% csrf_token %}
+    <p class="text-center"> Voulez-vous supprimer le produit << {{ product.name }}>> ?</p>
+    <div class="form-group text-center my-3">
+        <button class="btn btn-success" type="submit">Confirmer</button>
+        <a class="btn btn-danger" href="{% url 'products:index' %}">Annuler</a>
+    </div>
+</form>
+{% endblock content %}
