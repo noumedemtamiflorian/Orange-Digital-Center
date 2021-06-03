@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: pouhelandry@gmail.com
+Date: Wed, 26 May 2021 23:55:00 -0000
+Message-ID: 
+ <162207330070.9639.13636118506732450390@noumedem-HP-EliteBook-8560p>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/NQ/ana53o-4d49778b914eb56d23d945ffc98f8762/
+
+Your username, in case you’ve forgotten: pouhe_landry
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

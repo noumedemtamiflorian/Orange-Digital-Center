@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: noumedemtamiflorian@gmail.com
+Date: Wed, 26 May 2021 11:44:12 -0000
+Message-ID: 
+ <162202945263.56489.5158255995933031327@noumedem-HP-EliteBook-8560p>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/NA/an979o-44511249a722964cf521370b00a3ebfb/
+
+Your username, in case you’ve forgotten: noumedem_tami_florian
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

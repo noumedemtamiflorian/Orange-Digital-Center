@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/f0cbe244e2.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .errorlist {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="text-center mb-3 ">Listes de produits</h1>
+
+    <div class="col-10 mx-auto">
+        <div class="d-flex justify-content-end my-2">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate">
+                <i class="fas fa-plus-square"></i>
+            </button>
+        </div>
+        <table class="table table-bordeless table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nom</th>
+                    <th>prix</th>
+                    <th>Marque</th>
+                    <th>Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produit in produits %}
+                <tr onclick="showData(this)" data-url="{% url 'show_produit' produit.id %}">
+                    <td>{{ produit.id}}</td>
+                    <td>{{ produit.nom}}</td>
+                    <td>{{ produit.prix}}</td>
+                    <td>{{ produit.marque}}</td>
+                    <td>{{ produit.code}}</td>
+                    <td class="text-center">
+                        <button type="button" id="detailBtn" data-toggle="modal" data-target="#modalDetail"
+                            class="btn btn-primary"><i class="far fa-eye"></i></button>
+                        <button type="button" data-toggle="modal" data-target="#modalEdit" class="btn btn-primary"><i
+                                class="fas fa-edit"></i></button>
+                        <button type="button" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger"><i
+                                class="far fa-trash-alt"></i></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% include "modalCreate.html" %}
+    {% include "modalDetail.html" %}
+    {% include "modalEdit.html" %}
+    {% include "modalDelete.html" %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        function showData(obj) {
+            console.log(obj.dataset.url)
+            // httpRequest = new XMLHttpRequest();
+            // httpRequest.onreadystatechange = () => {
+            //     if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            //         if (httpRequest.status === 200) {
+            //             response = httpRequest.responseText
+            //             data = JSON.parse(response).fields
+            //             document.getElementById("view_nom").innerHTML = data.nom
+            //             document.getElementById("view_prix").innerHTML = data.prix
+            //             document.getElementById("view_marque").innerHTML = data.marque
+            //             document.getElementById("view_code").innerHTML = data.code
+            //             document.getElementById("view_categorie").innerHTML = data.category
+            //             $("#modalDetail").modal({ "show": true })
+            //         } else {
+            //             $("#modalDetail").html('There was a problem with the request.')
+            //         }
+            //     }
+            // }
+            // httpRequest.open('GET',  obj.dataset.url);
+            // httpRequest.send();
+            axios.get("http://127.0.0.1:8000/products/1")
+                .then(function (response) {
+                    console.log(response);
+                })
+        }
+        showModal = (event) => {
+            $("#modalDetail").modal({ "show": true })
+            httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = () => {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        response = httpRequest.responseText
+                        console.log(JSON.parse(response).fields);
+                        document.getElementById("view_nom").innerHTML = JSON.parse(response).fields.nom
+                        document.getElementById("view_prix").innerHTML = JSON.parse(response).fields.prix
+                        document.getElementById("view_marque").innerHTML = JSON.parse(response).fields.marque
+                        document.getElementById("view_code").innerHTML = JSON.parse(response).fields.code
+                        document.getElementById("view_categorie").innerHTML = JSON.parse(response).fields.category
+                    } else {
+                        alert('There was a problem with the request.');
+                    }
+                }
+            }
+            httpRequest.open('GET', 'http://127.0.0.1:8000/products/' + event);
+            httpRequest.send();
+        }
+    </script>
+</body>
+
+</html>

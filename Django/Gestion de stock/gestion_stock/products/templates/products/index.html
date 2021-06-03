@@ -29,7 +29,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for product in products %}
+		{% for product in page.object_list %}
 		<tr>
 			<td>{{ product.id }}</td>
 			<td>{{ product.name }}</td>
@@ -47,4 +47,15 @@
 		{% endfor %}
 	</tbody>
 </table>
+
+<div class="d-flex justify-content-center">
+	<div class="page-links">
+		{% if page.has_previous %}
+		<a class="btn btn-primary" href="{% url 'products:index' %}?page={{page.previous_page_number}}">Precedent</a>
+		{% endif %}
+		{% if page.has_next %}
+		<a class="btn btn-primary" href="{% url 'products:index' %}?page={{page.next_page_number}}">Suivant</a>
+		{% endif %}
+	</div>
+</div>
 {% endblock content %}

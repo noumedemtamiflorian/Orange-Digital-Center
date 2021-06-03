@@ -1,0 +1,16 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock head_title %}
+
+{% block content %}
+<h1 class="text-center my-4">Ajouter Un Fournisseur</h1>
+<div class="col-6 mb-3 mx-auto">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+    </form>
+</div>
+{% endblock content %}

@@ -18,6 +18,7 @@
             </button>
             {# Assumes you setup the password_reset view in your URLconf #}
             <p class="mt-5 mb-3 text-center text-muted">
+                <a href="{% url 'accounts:password_reset' %}">Reset Password</a>
                 Not registered yet?
                 <a href="{% url 'accounts:signup'  %}">Create an account</a>
             </p>

@@ -2,6 +2,7 @@ from django import forms
 from django.forms import widgets
 
 from .models import Product, Category
+from tinymce.widgets import TinyMCE
 
 
 class ProductForm(forms.ModelForm):
@@ -11,7 +12,7 @@ class ProductForm(forms.ModelForm):
         fields = ['name', 'description', 'category',
                   'image', 'quantity', 'price']
         widgets = {
-            'description': widgets.Textarea(attrs={'class': 'form-control'}),
+            'description': TinyMCE(attrs={'class': 'form-control'}),
             'name': widgets.TextInput(attrs={'class': 'form-control'}),
             'quantity': widgets.NumberInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control', 'min': "12"}),
@@ -20,7 +21,6 @@ class ProductForm(forms.ModelForm):
 
 
 class CategoryForm(forms.ModelForm):
-
     class Meta:
         model = Category
         fields = ['name', 'slug']

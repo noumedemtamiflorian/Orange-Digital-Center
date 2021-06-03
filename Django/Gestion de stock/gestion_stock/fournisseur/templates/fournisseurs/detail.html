@@ -1,0 +1,21 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block title %}
+Mes Produits
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center my-4">Fournisseur {{product.name}}</h1>
+<div class="col-md-6 col-xs-6 mx-auto">
+	<p>Name : {{product.name}}</p>
+	<p>Enail :  {{product.email}} </p>
+	<p>Addresse :  {{product.addresse}}  </p>
+	<p>Numero de telephone :  {{product.number}} </p>
+	<div class="d-flex justify-content-around">
+		<a href="{% url 'fournisseur:edit' product.id  %}"><button class="btn btn-primary">Editer</button></a>
+		<a href="{% url 'fournisseur:delete'  product.id %}"><button class="btn btn-danger">Supprimer</button></a>
+	</div>
+</div>
+{% endblock %}
+
+</p>

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Category(models.Model):
     nom = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -9,7 +10,11 @@ class Category(models.Model):
     def __str__(self):
         return self.nom
 
+    def natural_key(self):
+        return self.nom
+
 # Create your models here.
+
 
 class Produits(models.Model):
     nom = models.CharField(max_length=50, blank=False, null=False, unique=True)
@@ -20,6 +25,11 @@ class Produits(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True)
     deleted_at = models.DateTimeField(null=True)
+    image = models.ImageField(
+        upload_to='images',
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.nom
